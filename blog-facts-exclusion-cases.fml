@@ -1,0 +1,96 @@
+let minimizeComplexityPost: Post = {
+  bradsBlog,
+  createdDate: "2024-08-08T00:00:00Z"
+}
+
+let minimizeComplexityPublished: Post.Published = {
+  minimizeComplexityPost,
+  publishedDate: "2024-08-08T00:02:00Z"
+}
+
+let minimizeComplexityTitle: Post.Title = {
+  minimizeComplexityPost,
+  value: "Destroy Complexity",
+  prior: []
+}
+
+let minimizeComplexityTitle2: Post.Title = {
+  minimizeComplexityPost,
+  value: "Minimize Complexity",
+  prior: [ prematureOptTitle ]
+}
+
+let minimizeComplexityAuthor: Post.Author = {
+  minimizeComplexityPost,
+  brad,
+  createdDate: "2024-08-08T00:01:00Z"
+}
+
+let unbpublishedPost: Post = {
+  bradsBlog,
+  createdDate: "2024-08-08T00:00:00Z"
+}
+
+let unbpublishedTitle: Post.Title = {
+  unbpublishedPost,
+  value: "Not Published",
+  prior: []
+}
+
+let unbpublishedAuthor: Post.Author = {
+  unbpublishedPost,
+  brad,
+  createdDate: "2024-08-08T00:01:00Z"
+}
+
+let whenToOptimizePost: Post = {
+  bradsBlog,
+  createdDate: "2024-08-08T00:00:00Z"
+}
+
+let whenToOptimizePublished: Post.Published = {
+  whenToOptimizePost,
+  publishedDate: "2024-08-08T00:02:00Z"
+}
+
+let whenToOptimizeRedacted: Post.Redacted = {
+  whenToOptimizePublished
+}
+
+let whenToOptimizeTitle: Post.Title = {
+  whenToOptimizePost,
+  value: "Redacted Post",
+  prior: []
+}
+
+let whenToOptimizeAuthor: Post.Author = {
+  whenToOptimizePost,
+  brad,
+  createdDate: "2024-08-08T00:01:00Z"
+}
+
+let nextBigThingPost: Post = {
+  bradsBlog,
+  createdDate: "2024-08-08T00:00:00Z"
+}
+
+let nextBigThingPublished: Post.Published = {
+  nextBigThingPost,
+  publishedDate: "2024-08-08T00:02:00Z"
+}
+
+let nextBigThingRedacted: Post.Deleted = {
+  nextBigThingPost
+}
+
+let nextBigThingTitle: Post.Title = {
+  nextBigThingPost,
+  value: "Deleted Post",
+  prior: []
+}
+
+let nextBigThingAuthor: Post.Author = {
+  nextBigThingPost,
+  brad,
+  createdDate: "2024-08-08T00:01:00Z"
+}

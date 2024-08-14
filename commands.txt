@@ -1,0 +1,3 @@
+
+
+curl -vv -X POST --data "@/Users/dkichler/sandbox/immutable-architecture/blog-facts.fml" -H "Content-Type: text/plain" http://127.0.0.1:8080/jinaga/write

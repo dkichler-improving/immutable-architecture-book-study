@@ -1,137 +1,7 @@
 let bradsBlog: Blog = {
-  title: "Brad's Engineering Blog",
+  title: "Brad's Blog",
   domain: "brads-tech-blog.net"
 }
-
-let prematureOptPost: Post = {
-  bradsBlog,
-  createdDate: "2024-08-08T00:00:00Z"
-}
-
-let prematureOptPublished: Post.Published {
-  prematureOptPost,
-  publishedDate: "2024-08-08T00:02:00Z"
-}
-
-let prematureOptTitle: Post.Title = {
-  prematureOptPost,
-  value: "Premature Optimization",
-  prior: []
-}
-
-let prematureOptTitle2: Post.Title = {
-  prematureOptPost,
-  value: "Premature Optimization: tread carefully",
-  prior: [prematureOptTitle]
-}
-
-let prematureOptAuthor: Post.Author = {
-  prematureOptPost,
-  brad,
-  createdDate: "2024-08-08T00:01:00Z"
-}
-
-// published post 2
-let minimizeComplexityPost: Post = {
-  bradsBlog,
-  createdDate: "2024-08-08T00:00:00Z"
-}
-
-let minimizeComplexityPublished: Post.Published {
-  minimizeComplexityPost,
-  publishedDate: "2024-08-08T00:02:00Z"
-}
-
-let minimizeComplexityTitle: Post.Title = {
-  minimizeComplexityPost,
-  value: "Minimize Complexity",
-  prior: []
-}
-
-let minimizeComplexityTitle2: Post.Title = {
-  minimizeComplexityPost,
-  value: "Destroy Complexity at All Costs!",
-  prior: [prematureOptTitle]
-}
-
-let minimizeComplexityAuthor: Post.Author = {
-  minimizeComplexityPost,
-  brad,
-  createdDate: "2024-08-08T00:01:00Z"
-}
-
-// "unpublished" post - no Published successor
-let unbpublishedPost: Post = {
-  bradsBlog,
-  createdDate: "2024-08-08T00:00:00Z"
-}
-
-let unbpublishedTitle: Post.Title = {
-  unbpublishedPost,
-  value: "This will not be published",
-  prior: []
-}
-
-let unbpublishedAuthor: Post.Author = {
-  unbpublishedPost,
-  brad,
-  createdDate: "2024-08-08T00:01:00Z"
-}
-
-// redacted post
-let whenToOptimizePost: Post = {
-  bradsBlog,
-  createdDate: "2024-08-08T00:00:00Z"
-}
-
-let whenToOptimizePublished: Post.Published {
-  whenToOptimizePost,
-  publishedDate: "2024-08-08T00:02:00Z"
-}
-
-let whenToOptimizeRedacted: Post.Redacted {
-  whenToOptimizePublished
-}
-
-let whenToOptimizeTitle: Post.Title = {
-  whenToOptimizePost,
-  value: "When to Optimize",
-  prior: []
-}
-
-let whenToOptimizeAuthor: Post.Author = {
-  whenToOptimizePost,
-  brad,
-  createdDate: "2024-08-08T00:01:00Z"
-}
-
-// deleted post
-let nextBigThingPost: Post = {
-  bradsBlog,
-  createdDate: "2024-08-08T00:00:00Z"
-}
-
-let nextBigThingPublished: Post.Published {
-  nextBigThingPost,
-  publishedDate: "2024-08-08T00:02:00Z"
-}
-
-let nextBigThingRedacted: Post.Deleted {
-  nextBigThingPost
-}
-
-let nextBigThingTitle: Post.Title = {
-  nextBigThingPost,
-  value: "AI: The Next Big Thing!",
-  prior: []
-}
-
-let nextBigThingAuthor: Post.Author = {
-  nextBigThingPost,
-  brad,
-  createdDate: "2024-08-08T00:01:00Z"
-}
-
 
 let brad: Author = {
   bradsBlog
@@ -139,104 +9,40 @@ let brad: Author = {
 
 let bradsName: Author.Name = {
   brad,
-  value: "Bradley D Minor"
+  value: "Bradley D Minor",
   prior: []
 }
 
 let bradsName2: Author.Name = {
   brad,
   value: "Brad Minor",
-  prior: [bradsName]
+  prior: [ bradsName ]
 }
 
-
-// post and author that has been deleted
-let bradsBud: Author = {
-  bradsBlog
-}
-
-let bradsBudsName: Author.Name = {
-  bradsBud,
-  value: "Joe Schmoe",
-  prior: []
-}
-
-let bradsBudsPost: Post = {
+let prematureOptPost: Post = {
   bradsBlog,
   createdDate: "2024-08-08T00:00:00Z"
 }
 
-let bradsBudsPublished: Post.Published {
-  bradsBudsPost,
+let prematureOptPublished: Post.Published = {
+  prematureOptPost,
   publishedDate: "2024-08-08T00:02:00Z"
 }
 
-let bradsBudsTitle: Post.Title = {
-  bradsBudsPost,
-  value: "PHP:  Never been better",
+let prematureOptTitle: Post.Title = {
+  prematureOptPost,
+  value: "PreemOpt: don't",
   prior: []
 }
 
-let bradsBudsAuthor: Post.Author = {
-  bradsBudsPost,
-  bradsBud,
-  createdDate: "2024-08-08T00:01:00Z"
+let prematureOptTitle2: Post.Title = {
+  prematureOptPost,
+  value: "Preem Opt: do?",
+  prior: [prematureOptTitle]
 }
 
-let bradsBudDeleted: Post.Author.Deleted = {
-  bradsBudsAuthor
-}
-
-// another brads bud with a published post
-let bradsOtherBud: Author = {
-  bradsBlog
-}
-
-let bradsOtherBudsName: Author.Name = {
-  bradsOtherBud,
-  value: "Jane Schmane",
-  prior: []
-}
-
-let janesPost: Post = {
-  bradsBlog,
-  createdDate: "2024-08-08T00:00:00Z"
-}
-
-let janesPublished: Post.Published = {
-  janesPost,
-  publishedDate: "2024-08-08T00:02:00Z"
-}
-
-let janesTitle: Post.Title = {
-  janesPost,
-  value: "JVM heap analysis and optimization",
-  prior: []
-}
-
-let janesPostAuthor: Post.Author = {
-  janesPost,
-  bradsOtherBud,
-  createdDate: "2024-08-08T00:01:00Z"
-}
-
-let anotherBlog: Blog = {
-  title: "Some Other Blog",
-  domain: "bloggin.net"
-}
-
-let anotherPost: Post = {
-  anotherBlog
-}
-
-let anotherPostTitle: Post.Title = {
-  anotherPost,
-  value: "Some other post",
-  prior: []
-}
-
-let anotherPostAuthor: Post.Author = {
-  anotherPost,
+let prematureOptAuthor: Post.Author = {
+  prematureOptPost,
   brad,
   createdDate: "2024-08-08T00:01:00Z"
 }

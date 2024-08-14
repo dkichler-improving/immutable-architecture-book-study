@@ -1,0 +1,8 @@
+services:
+  app:
+    image: jinaga/jinaga-replicator
+    hostname: jinaga
+    container_name: jinaga_replicator
+    ports:
+      - '8080:8080'
+    
