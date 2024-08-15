@@ -1,55 +1,55 @@
-postsForBlog = (b: Blog) {
+(b: Blog) {
   p: Post [
-    p -> blob = b
-    E { // include only if published, and not if redacted
+    p -> blog: Blog = b
+    E {
       pp: Post.Published [
-        pp -> post = p
+        pp -> post: Post = p
+        E! {
+          pr: Post.Redacted [
+            pr -> postPublished: Post.Published = pp
+          ]
+        }
       ]
-      E! { // not if redacted
-        pr: Post.Redacted [
-          pr -> postPublished = pp
-        ]
-      }
     }
-    E! { // include only if not deleted
+    !E {
       pd: Post.Deleted [
-        pd → post = p
+        pd -> post: Post = p
       ]
     }
-    E! { // include only if post author is not deleted
+    !E {
       ad: Post.Author.Deleted [
-        ad → postAuthor → post = p
+        ad -> postAuthor: Post.Author -> post: Post = p
       ]
     }
   ]
 } => {
   titles = {
-    pt: Post.Title [ // latest post title
-      pt → post = p
-      E! {
+    pt: Post.Title [
+      pt -> post: Post = p
+      !E {
         next: Post.Title [
-          next → prior = pt
+          next -> prior: Post.Title* = pt
         ]
       }
     ]
   } => pt.value
   authorsNames = {
     pa: PostAuthor [
-      pa → post = p
+      pa -> post: Post = p
     ]
     a: Author [
-      a = pa → author
+      a = pa -> author: Post.Author
     ]
     an: Author.Name [
-      an -> author = a
-      E! {
-        next - prior = a
+      an -> author: Author = a
+      !E {
+        next -> prior: Author.Name*  = a
       }
     ]
   } => an.value
   publicationDates = {
     pd: Post.Published [
-      pd -> post = p
+      pd -> post: Post = p
     ]
-  } => pd.postPublished
+  } => pd.publishedDate
 }
