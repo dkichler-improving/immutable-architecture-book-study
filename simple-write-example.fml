@@ -1,0 +1,14 @@
+let site: Blog.Site = {
+    domain: "qedcode.com"
+}
+
+let p: Blog.Post = {
+  site,
+  createdAt: "2024-08-15T23:00:00Z"
+}
+
+let t: Blog.Post.Title = {
+  p,
+  title:  "A Test title",
+  prior: []
+}
