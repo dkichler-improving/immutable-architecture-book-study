@@ -4,7 +4,7 @@
     E {
       pp: Post.Published [
         pp -> post: Post = p
-        E! {
+        !E {
           pr: Post.Redacted [
             pr -> postPublished: Post.Published = pp
           ]
@@ -28,7 +28,7 @@
       pt -> post: Post = p
       !E {
         next: Post.Title [
-          next -> prior: Post.Title* = pt
+          next -> prior: Post.Title = pt
         ]
       }
     ]
@@ -43,7 +43,9 @@
     an: Author.Name [
       an -> author: Author = a
       !E {
-        next -> prior: Author.Name*  = a
+        next: Author.Name [
+          next -> prior: Author.Name = an
+        ]
       }
     ]
   } => an.value
