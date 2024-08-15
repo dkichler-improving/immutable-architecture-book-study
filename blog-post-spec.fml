@@ -1,6 +1,264 @@
-(b: Blog) {
+let bradsBlog: Blog = {
+  title: "Brad's Blog",
+  domain: "brads-tech-blog.net"
+}
+
+let brad: User = {
+  relation: "Blog Founder"
+}
+
+let bradAuth: Author = {
+  bradsBlog,
+  brad
+}
+
+let bradsName: Author.Name = {
+  bradAuth,
+  value: "Bradley D Minor",
+  prior: []
+}
+
+let bradsName2: Author.Name = {
+  bradAuth,
+  value: "Brad Minor",
+  prior: [ bradsName ]
+}
+
+let publishedPost: Post = {
+  bradsBlog,
+  createdDate: "2024-08-08T05:05:00Z"
+}
+
+let published1: Post.Published = {
+  publishedPost,
+  publishedDate: "2024-08-08T00:12:20Z"
+}
+
+let publishedPostTitle: Post.Title = {
+  publishedPost,
+  value: "PreemOpt: don't",
+  prior: []
+}
+
+let publishedPostTitle2: Post.Title = {
+  publishedPost,
+  value: "Preem Opt: do?",
+  prior: [publishedPostTitle]
+}
+
+let published1Author: Post.Author = {
+  publishedPost,
+  bradAuth,
+  createdDate: "2024-08-08T00:01:05Z"
+}
+
+let publishedPost2: Post = {
+  bradsBlog,
+  createdDate: "2024-08-08T00:11:11Z"
+}
+
+let published2: Post.Published = {
+  publishedPost2,
+  publishedDate: "2024-08-08T00:02:23Z"
+}
+
+let publishedPost2Title: Post.Title = {
+  publishedPost2,
+  value: "Destroy Complexity",
+  prior: []
+}
+
+let publishedPost2Title2: Post.Title = {
+  publishedPost2,
+  value: "Minimize Complexity",
+  prior: [ publishedPost2Title ]
+}
+
+let publishedPost2Author: Post.Author = {
+  publishedPost2,
+  bradAuth,
+  createdDate: "2024-08-08T00:01:16Z"
+}
+
+
+let unbpublishedPost: Post = {
+  bradsBlog,
+  createdDate: "2024-08-08T10:00:17Z"
+}
+
+let unbpublishedTitle: Post.Title = {
+  unbpublishedPost,
+  value: "Not Published",
+  prior: []
+}
+
+let unbpublishedAuthor: Post.Author = {
+  unbpublishedPost,
+  bradAuth,
+  createdDate: "2024-08-08T00:01:12Z"
+}
+
+let redactedPost: Post = {
+  bradsBlog,
+  createdDate: "2024-08-08T00:11:00Z"
+}
+
+let redactedPostPub: Post.Published = {
+  redactedPost,
+  publishedDate: "2024-08-08T00:02:50Z"
+}
+
+let redacted: Post.Redacted = {
+  redactedPostPub
+}
+
+let redactedPostTitle: Post.Title = {
+  redactedPost,
+  value: "Redacted Post",
+  prior: []
+}
+
+let redactedPostAuthor: Post.Author = {
+  redactedPost,
+  bradAuth,
+  createdDate: "2024-08-08T00:01:56Z"
+}
+
+let deletedPost: Post = {
+  bradsBlog,
+  createdDate: "2024-08-08T00:23:11Z"
+}
+
+let deletedPostPub: Post.Published = {
+  deletedPost,
+  publishedDate: "2024-08-08T00:02:03Z"
+}
+
+let deletedPostDel: Post.Deleted = {
+  deletedPost
+}
+
+let deletedPostTitle: Post.Title = {
+  deletedPost,
+  value: "Deleted Post",
+  prior: []
+}
+
+let deletedPostAuthor: Post.Author = {
+  deletedPost,
+  bradAuth,
+  createdDate: "2024-08-08T00:01:02Z"
+}
+
+
+let bradsBud: User = {
+  relation: "Brad's buddy"
+}
+
+let bradsBudAuth: Author = {
+  bradsBlog,
+  bradsBud
+}
+
+let bradsBudsName: Author.Name = {
+  bradsBudAuth,
+  value: "Joe Schmoe",
+  prior: []
+}
+
+let bradsBudsPost: Post = {
+  bradsBlog,
+  createdDate: "2024-08-08T00:20:01Z"
+}
+
+let published3: Post.Published = {
+  bradsBudsPost,
+  publishedDate: "2024-08-08T00:02:00Z"
+}
+
+let bradsBudsTitle: Post.Title = {
+  bradsBudsPost,
+  value: "PHP:  Never better",
+  prior: []
+}
+
+let bradsBudsAuthor: Post.Author = {
+  bradsBudsPost,
+  bradsBudAuth,
+  createdDate: "2024-08-08T02:01:00Z"
+}
+
+let bradsBudDeleted: Post.Author.Deleted = {
+  bradsBudsAuthor
+}
+
+let bradsOtherBud: User = {
+  relation: "Brad's other buddy"
+}
+
+let anotherBudAuthor: Author = {
+  bradsBlog,
+  bradsOtherBud
+}
+
+let anotherName: Author.Name = {
+  anotherBudAuthor,
+  value: "Jane Schmane",
+  prior: []
+}
+
+let janesPost: Post = {
+  bradsBlog,
+  createdDate: "2024-08-08T03:11:00Z"
+}
+
+let janesPublished: Post.Published = {
+  janesPost,
+  publishedDate: "2024-08-08T03:02:00Z"
+}
+
+let janesTitle: Post.Title = {
+  janesPost,
+  value: "JVM heap analysis",
+  prior: []
+}
+
+let janesPostAuthor: Post.Author = {
+  janesPost,
+  anotherBudAuthor,
+  createdDate: "2024-08-08T00:01:00Z"
+}
+
+let anotherBlog: Blog = {
+  title: "Some Other Blog",
+  domain: "bloggin.net"
+}
+
+let anotherPost: Post = {
+  anotherBlog,
+  createdDate: "2024-08-08T23:11:12Z"
+}
+
+let anotherPublished: Post.Published = {
+  anotherPost,
+  publishedDate: "2024-08-09T23:11:12Z"
+}
+
+let anotherPostTitle: Post.Title = {
+  anotherPost,
+  value: "Some other post",
+  prior: []
+}
+
+let anotherPostAuthor: Post.Author = {
+  anotherPost,
+  brad,
+  createdDate: "2024-08-08T00:01:10Z"
+}
+
+(bradsBlog: Blog) {
   p: Post [
-    p -> blog: Blog = b
+    p -> blog: Blog = bradsBlog
     E {
       pp: Post.Published [
         pp -> post: Post = p
