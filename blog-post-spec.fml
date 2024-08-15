@@ -259,57 +259,5 @@ let anotherPostAuthor: Post.Author = {
 (bradsBlog: Blog) {
   p: Post [
     p -> blog: Blog = bradsBlog
-    E {
-      pp: Post.Published [
-        pp -> post: Post = p
-        !E {
-          pr: Post.Redacted [
-            pr -> postPublished: Post.Published = pp
-          ]
-        }
-      ]
-    }
-    !E {
-      pd: Post.Deleted [
-        pd -> post: Post = p
-      ]
-    }
-    !E {
-      ad: Post.Author.Deleted [
-        ad -> postAuthor: Post.Author -> post: Post = p
-      ]
-    }
   ]
-} => {
-  titles = {
-    pt: Post.Title [
-      pt -> post: Post = p
-      !E {
-        next: Post.Title [
-          next -> prior: Post.Title = pt
-        ]
-      }
-    ]
-  } => pt.value
-  authorsNames = {
-    pa: PostAuthor [
-      pa -> post: Post = p
-    ]
-    a: Author [
-      a = pa -> author: Post.Author
-    ]
-    an: Author.Name [
-      an -> author: Author = a
-      !E {
-        next: Author.Name [
-          next -> prior: Author.Name = an
-        ]
-      }
-    ]
-  } => an.value
-  publicationDates = {
-    pd: Post.Published [
-      pd -> post: Post = p
-    ]
-  } => pd.publishedDate
 }

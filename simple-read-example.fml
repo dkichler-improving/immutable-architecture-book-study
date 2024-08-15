@@ -1,0 +1,38 @@
+let site: Blog.Site = {
+    domain: "qedcode.com"
+}
+
+let p: Blog.Post = {
+  site,
+  createdAt: "2024-08-15T23:00:00Z"
+}
+
+let t: BlogPostTitle = {
+  p,
+  title:  "A Test title",
+  prior: []
+}
+
+(site: Blog.Site) {
+    post: Blog.Post [
+        post->site: Blog.Site = site
+        !E {
+            deleted: Blog.Post.Deleted [
+                deleted->post: Blog.Post = post
+            ]
+        }
+    ]
+} => {
+    id = #post
+    createdAt = post.createdAt
+    titles = {
+        title: Blog.Post.Title [
+            title->post: Blog.Post = post
+            !E {
+                next: Blog.Post.Title [
+                    next->prior: Blog.Post.Title = title
+                ]
+            }
+        ]
+    } => title.value
+}
