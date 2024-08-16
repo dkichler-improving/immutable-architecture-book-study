@@ -4,6 +4,6 @@ let site: Blog.Site = {
 
 (site: Blog.Site) {
     post: Blog.Post [
-        post->site: Blog.Site = site
+        post->s: Blog.Site = site
     ]
 }
