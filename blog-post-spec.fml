@@ -11,7 +11,7 @@ let bradsBlog: Blog = {
         pp -> post: Post = p
         !E {
           pr: Post.Redacted [
-            pr -> postPublished: Post.Published = pp
+            pr -> published: Post.Published = pp
           ]
         }
       ]
@@ -23,7 +23,7 @@ let bradsBlog: Blog = {
     }
     !E {
       ad: Post.Author.Deleted [
-        ad -> postAuthor: Post.Author -> post: Post = p
+        ad -> author: Post.Author -> post: Post = p
       ]
     }
   ]
