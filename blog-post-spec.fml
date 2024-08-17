@@ -39,11 +39,11 @@ let bradsBlog: Blog = {
     ]
   } => pt.value
   authorsNames = {
-    pa: PostAuthor [
+    pa: Post.Author [
       pa -> post: Post = p
     ]
     a: Author [
-      a = pa -> author: Post.Author
+      a = pa -> author: Author
     ]
     an: Author.Name [
       an -> author: Author = a

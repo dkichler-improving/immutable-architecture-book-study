@@ -1,3 +1,20 @@
 For the exercises:
 
 Thought I could conveniently leave out the Author -> User fact relation as User seemed to serve no purpose to the model, but found that without a distinct User relation, an Author is ambiguous on it's own.  Trying to declare multiple authors for the same blog without a user to distinguish them is impossible.  This was pointed out to me by the replicator write endpoint:  duplicate key value violates unique constraint "ux_fact".  This was because an author fact does not include it's reference name - only it's attributes/predecessor references.  The model in the exercises does not declare a fact type for User, so I fabricated a single arbitrary property `relation` to give "uniqueness".
+
+
+
+Blog-facts properties:
+
+- has two defined blogs
+- one blog has a variety of posts
+  - two published by brad
+  - one published but then redacted <- filter out
+  - one published but deleted <- filter out
+  - one published by brads bud, whose author is deleted <- filter out
+  - one published by brads other bud, Jane Schmane
+- other blog has one post by another random author
+
+expected spec results:
+- two published posts by Brad: minimize complexity, Preem Opt: do?
+- one published post by Jane Schmane, JVM heap analysis
